@@ -1,0 +1,24 @@
+﻿<Page x:Class="ElectricalStore1.Pages.Autho"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ElectricalStore1.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Autho" Background="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="3" Text="Логин" Margin="283,116,283,-109"/>
+        <TextBox Grid.Row="3" Name="LoginTextBox" Margin="283,151,283,-151"/>
+        <TextBlock Grid.Row="3" Text="Пароль" Margin="283,178,283,-176"/>
+        <PasswordBox Grid.Row="3" Name="PasswordTextBox" Margin="283,199,283,-199"/>
+        <Button Grid.Row="3" Content="Авторизация" Click="LoginButton_Click" Margin="283,246,283,-257"/>
+    </Grid>
+</Page>
