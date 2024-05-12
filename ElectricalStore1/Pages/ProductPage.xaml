@@ -15,9 +15,10 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
-            <Button Content="Добавить" Click="AddButton_Click" Margin="5"/>
-            <Button Content="Удалить" Click="DeleteButton_Click" Margin="5"/>
-            <Button Content="Сохранить" Click="SaveButton_Click" Height="22" Width="74"/>
+            <Button Content="Добавить" Click="AddButton_Click" Margin="5" Height="33" Width="77" Background="LightGreen"/>
+            <Button Content="Удалить" Click="DeleteButton_Click" Margin="5" Height="34" Width="75" Background="LightGreen"/>
+            <Button Content="Сохранить" Click="SaveButton_Click" Height="38" Width="97" Background="LightGreen"/>
+            <Button Content="Вывести в Excel" Click="ExportToExcelButton_Click" Margin="5" Height="33" Width="120" Background="LightGreen"/>
         </StackPanel>
 
         <DataGrid x:Name="dataGrid"
@@ -29,13 +30,14 @@
           HeadersVisibility="Column"
           ItemsSource="{Binding ProductData}" SelectionChanged="dataGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="product_id" Binding="{Binding ProductId}" Width="70" />
-                <DataGridTextColumn Header="name" Binding="{Binding Name}" Width="150" />
-                <DataGridTextColumn Header="model" Binding="{Binding Model}" Width="100" />
-                <DataGridTextColumn Header="manufacturer" Binding="{Binding Manufacturer}" Width="150"/>
-                <DataGridTextColumn Header="price" Binding="{Binding Price}" Width="70"/>
-                <DataGridTextColumn Header="category_id" Binding="{Binding CategoryId}" Width="70" />
+                <DataGridTextColumn Header="product_id" Binding="{Binding ProductId}" Width="*" />
+                <DataGridTextColumn Header="name" Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="model" Binding="{Binding Model}" Width="*" />
+                <DataGridTextColumn Header="manufacturer" Binding="{Binding Manufacturer}" Width="*"/>
+                <DataGridTextColumn Header="price" Binding="{Binding Price}" Width="*"/>
+                <DataGridTextColumn Header="category_id" Binding="{Binding CategoryId}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
+
     </Grid>
 </Page>

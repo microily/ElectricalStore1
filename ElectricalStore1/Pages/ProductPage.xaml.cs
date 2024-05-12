@@ -1,20 +1,12 @@
-﻿using ElectricalStore1.Model;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ElectricalStore1.Model;
+using Microsoft.Win32;
+using OfficeOpenXml;
 
 namespace ElectricalStore1.Pages
 {
@@ -29,6 +21,8 @@ namespace ElectricalStore1.Pages
         {
             InitializeComponent();
             LoadData();
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         }
 
         private void LoadData()
@@ -145,6 +139,54 @@ namespace ElectricalStore1.Pages
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void ExportToExcelButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "Excel Files|*.xlsx|All Files|*.*",
+                    Title = "Сохранить файл Excel",
+                    FileName = "ProductData.xlsx"
+                };
+
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    FileInfo excelFile = new FileInfo(saveFileDialog.FileName);
+
+                    using (ExcelPackage package = new ExcelPackage(excelFile))
+                    {
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Product Data");
+
+                        // Записываем заголовки столбцов
+                        for (int i = 0; i < dataGrid.Columns.Count; i++)
+                        {
+                            worksheet.Cells[1, i + 1].Value = dataGrid.Columns[i].Header;
+                        }
+
+                        // Записываем данные из ProductData в Excel
+                        for (int i = 0; i < ProductData.Count; i++)
+                        {
+                            worksheet.Cells[i + 2, 1].Value = ProductData[i].ProductId;
+                            worksheet.Cells[i + 2, 2].Value = ProductData[i].Name;
+                            worksheet.Cells[i + 2, 3].Value = ProductData[i].Model;
+                            worksheet.Cells[i + 2, 4].Value = ProductData[i].Manufacturer;
+                            worksheet.Cells[i + 2, 5].Value = ProductData[i].Price;
+                            worksheet.Cells[i + 2, 6].Value = ProductData[i].CategoryId;
+                        }
+
+                        package.Save();
+                    }
+
+                    MessageBox.Show("Данные успешно сохранены в файл Excel.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при экспорте данных в Excel: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
