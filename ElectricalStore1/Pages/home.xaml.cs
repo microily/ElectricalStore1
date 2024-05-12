@@ -1,28 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ElectricalStore1.Model;
 
 namespace ElectricalStore1.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для home.xaml
-    /// </summary>
     public partial class home : Page
     {
-        public home()
+        private readonly electrical_storeContext _context;
+        private Employee _currentUser;
+
+        public home(Employee currentUser)
         {
             InitializeComponent();
+            _currentUser = currentUser;
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Autho());
+        }
+
+        private void ProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentUser != null && (_currentUser.RoleId == 1 || _currentUser.RoleId == 8))
+            {
+                ProductPage productPage = new ProductPage(_currentUser);
+                NavigationService.Navigate(productPage);
+            }
+            else
+            {
+                MessageBox.Show("Недостаточно прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

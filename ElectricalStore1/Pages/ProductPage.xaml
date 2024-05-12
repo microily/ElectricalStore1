@@ -21,6 +21,9 @@
             <Button Content="Вывести в Excel" Click="ExportToExcelButton_Click" Margin="5" Height="33" Width="120" Background="LightGreen"/>
         </StackPanel>
 
+        <Button Content="Назад" Click="BackButton_Click" Width="103" Background="LightGreen" Height="38" Margin="687,13,10,13"/>
+
+
         <DataGrid x:Name="dataGrid"
           Grid.Row="1"
           Margin="10"

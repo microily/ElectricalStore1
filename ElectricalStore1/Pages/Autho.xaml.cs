@@ -1,20 +1,8 @@
-﻿using ElectricalStore1.Model;
-using ElectricalStore1.Pages;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ElectricalStore1.Model;
 
 namespace ElectricalStore1.Pages
 {
@@ -43,19 +31,8 @@ namespace ElectricalStore1.Pages
 
                 if (employee != null)
                 {
-                    // Здесь логика определения, какое окно откроется на основе роли сотрудника
-                    switch (employee.RoleId)
-                    {
-                        case 1:
-                            NavigationService.Navigate(new ProductPage());
-                            break;
-                        case 8:
-                            NavigationService.Navigate(new ProductPage());
-                            break;
-                        default:
-                            MessageBox.Show("Недопустимая роль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                            break;
-                    }
+                    // Передаем объект Employee в конструктор класса home
+                    NavigationService.Navigate(new home(employee));
                 }
                 else
                 {
@@ -68,4 +45,4 @@ namespace ElectricalStore1.Pages
             }
         }
     }
- }
+}

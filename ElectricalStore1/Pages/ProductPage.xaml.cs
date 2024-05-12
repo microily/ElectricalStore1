@@ -16,10 +16,12 @@ namespace ElectricalStore1.Pages
     public partial class ProductPage : Page
     {
         private ObservableCollection<Product> ProductData = new ObservableCollection<Product>();
+        private Employee currentUser; // Поле для хранения информации о текущем пользователе
 
-        public ProductPage()
+        public ProductPage(Employee currentUser = null) // Добавляем параметр currentUser по умолчанию
         {
             InitializeComponent();
+            this.currentUser = currentUser; // Сохраняем текущего пользователя
             LoadData();
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
@@ -135,6 +137,13 @@ namespace ElectricalStore1.Pages
                 MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}");
             }
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            home homePage = new home(currentUser);
+            NavigationService.Navigate(homePage);
+        }
+
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
