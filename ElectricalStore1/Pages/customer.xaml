@@ -6,9 +6,39 @@
       xmlns:local="clr-namespace:ElectricalStore1.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="customer" Background="{StaticResource PageBackgroundBrush}">
+      Title="Customer" Background="{StaticResource PageBackgroundBrush}">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10,10,209,10">
+            <Button Content="Добавить" Click="AddButton_Click" Margin="5" Height="34" Width="100"/>
+            <Button Content="Удалить" Click="DeleteButton_Click" Margin="5" Height="34" Width="100"/>
+            <Button Content="Сохранить" Click="SaveButton_Click" Height="34" Width="100"/>
+        </StackPanel>
+
+        <Button Content="Назад" Click="BackButton_Click" Width="103" Height="34" 
+        HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,10,0"/>
+
+        <DataGrid x:Name="dataGrid"
+          Grid.Row="1"
+          Margin="10"
+          AutoGenerateColumns="False"
+          VerticalScrollBarVisibility="Hidden"
+          CanUserAddRows="True"
+          HeadersVisibility="Column"
+          ItemsSource="{Binding CustomerData}" SelectionChanged="dataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="CustomerId" Binding="{Binding CustomerId}" Width="*" />
+                <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}" Width="*" />
+                <DataGridTextColumn Header="LastName" Binding="{Binding LastName}" Width="*" />
+                <DataGridTextColumn Header="Patronymic" Binding="{Binding Patronymic}" Width="*" />
+                <DataGridTextColumn Header="PhoneNumber" Binding="{Binding PhoneNumber}" Width="*" />
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

@@ -48,12 +48,35 @@ namespace ElectricalStore1.Pages
 
         private void VisitorsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            // Проверяем роль текущего пользователя
+            if (_currentUser != null && (_currentUser.RoleId == 1 || _currentUser.RoleId == 2 || _currentUser.RoleId == 7 || _currentUser.RoleId == 8))
+            {
+                // Создаем новую страницу для работы с клиентами и передаем текущего пользователя
+                customer customerPage = new customer(_currentUser);
+                NavigationService.Navigate(customerPage);
+            }
+            else
+            {
+                // Если у пользователя нет соответствующих прав, выводим сообщение об ошибке
+                MessageBox.Show("Недостаточно прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
 
         private void WarehouseButton_Click(object sender, RoutedEventArgs e)
         {
-
+            // Проверяем роль текущего пользователя
+            if (_currentUser != null && (_currentUser.RoleId == 1 || _currentUser.RoleId == 3 || _currentUser.RoleId == 6 || _currentUser.RoleId == 8))
+            {
+                // Создаем новую страницу склада и передаем текущего пользователя
+                warehouse warehousePage = new warehouse(_currentUser);
+                NavigationService.Navigate(warehousePage);
+            }
+            else
+            {
+                // Если у пользователя нет соответствующих прав, выводим сообщение об ошибке
+                MessageBox.Show("Недостаточно прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
