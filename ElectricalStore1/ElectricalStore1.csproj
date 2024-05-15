@@ -9,13 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DocX" Version="3.0.0" />
     <PackageReference Include="EPPlus" Version="7.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.28" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.28">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Office.Interop.Word" Version="15.0.4797.1004" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.22" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dogovor\" />
   </ItemGroup>
 
 </Project>

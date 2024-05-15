@@ -4,6 +4,42 @@
              xmlns:local="clr-namespace:ElectricalStore1"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- Глобальный стиль для всех элементов управления -->
+        <Style TargetType="Control">
+            <Setter Property="FontFamily" Value="Raleway"/>
+        </Style>
+
+        <!-- Шаблон для кнопок с закругленными углами -->
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#6A1B9A" Offset="0"/>
+                        <GradientStop Color="#C2185B" Offset="0.5"/>
+                        <GradientStop Color="#AD1457" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Новый ресурс градиентного фона для страницы -->
+        <LinearGradientBrush x:Key="PageBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FFFFFF" Offset="0"/>
+            <GradientStop Color="#0FFFFF" Offset="0.5"/>
+            <GradientStop Color="#FFFFFF" Offset="1"/>
+        </LinearGradientBrush>
     </Application.Resources>
 </Application>

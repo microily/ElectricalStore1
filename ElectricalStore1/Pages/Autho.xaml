@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ElectricalStore1.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Autho" Background="White">
+      Title="Autho" Background="{StaticResource PageBackgroundBrush}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -19,6 +19,6 @@
         <TextBox Grid.Row="3" Name="LoginTextBox" Margin="283,151,283,-151"/>
         <TextBlock Grid.Row="3" Text="Пароль" Margin="283,178,283,-176"/>
         <PasswordBox Grid.Row="3" Name="PasswordTextBox" Margin="283,199,283,-199"/>
-        <Button Grid.Row="3" Content="Авторизация" Click="LoginButton_Click" Margin="283,246,283,-257" Background="LightGreen"/>
+        <Button Grid.Row="3" Content="Авторизация" Click="LoginButton_Click" Margin="283,246,283,-257"/>
     </Grid>
 </Page>

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ElectricalStore1.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProductPage" Background="White">
+      Title="ProductPage" Background="{StaticResource PageBackgroundBrush}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,14 +14,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
-            <Button Content="Добавить" Click="AddButton_Click" Margin="5" Height="33" Width="77" Background="LightGreen"/>
-            <Button Content="Удалить" Click="DeleteButton_Click" Margin="5" Height="34" Width="75" Background="LightGreen"/>
-            <Button Content="Сохранить" Click="SaveButton_Click" Height="38" Width="97" Background="LightGreen"/>
-            <Button Content="Вывести в Excel" Click="ExportToExcelButton_Click" Margin="5" Height="33" Width="120" Background="LightGreen"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10,10,209,10">
+            <Button Content="Добавить" Click="AddButton_Click" Margin="5" Height="34" Width="100"/>
+            <Button Content="Удалить" Click="DeleteButton_Click" Margin="5" Height="34" Width="100"/>
+            <Button Content="Сохранить" Click="SaveButton_Click" Height="34" Width="100"/>
+            <Button Content="Вывести в Excel" Click="ExportToExcelButton_Click" Margin="5" Height="34" Width="100"/>
         </StackPanel>
 
-        <Button Content="Назад" Click="BackButton_Click" Width="103" Background="LightGreen" Height="38" Margin="687,13,10,13"/>
+        <Button Content="Назад" Click="BackButton_Click" Width="103" Height="34" 
+        HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,10,0"/>
 
 
         <DataGrid x:Name="dataGrid"

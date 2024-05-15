@@ -6,10 +6,13 @@
       xmlns:local="clr-namespace:ElectricalStore1.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="home" Background="white">
+      Title="home" Background="{StaticResource PageBackgroundBrush}">
 
     <Grid>
-        <Button Content="Выйти из системы" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="LogoutButton_Click" Height="39" Width="120" Background="LightGreen"/>
-        <Button Content="Product" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,90,0,0" Click="ProductButton_Click" Height="52" Width="102" Background="LightGreen"/>
+        <Button Content="Выйти из системы" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="LogoutButton_Click" Height="39" Width="120"/>
+        <Button Content="Товары" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="93,173,0,0" Click="ProductButton_Click" Height="52" Width="102"/>
+        <Button Content="Посетители" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="263,173,0,0" Click="VisitorsButton_Click" Height="52" Width="102"/>
+        <Button Content="Работники" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="444,173,0,0" Click="EmployeeButton_Click" Height="52" Width="102"/>
+        <Button Content="Склад" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="606,173,0,0" Click="WarehouseButton_Click" Height="52" Width="102"/>
     </Grid>
 </Page>

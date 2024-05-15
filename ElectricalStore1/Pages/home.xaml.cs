@@ -33,5 +33,27 @@ namespace ElectricalStore1.Pages
                 MessageBox.Show("Недостаточно прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        private void EmployeeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentUser != null && (_currentUser.RoleId == 1 || _currentUser.RoleId == 8))
+            {
+                employee employeePage = new employee(_currentUser); // Подставьте свою страницу для работы с сотрудниками
+                NavigationService.Navigate(employeePage);
+            }
+            else
+            {
+                MessageBox.Show("Недостаточно прав доступа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void VisitorsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void WarehouseButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
